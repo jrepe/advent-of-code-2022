@@ -23,7 +23,7 @@ func problem1(input []string) int {
 	max := 0
 	for _, line := range input {
 		items := utils.ConvertStringSliceToInt(strings.Split(line, "\n"))
-		elfSum := sumOfItems(items)
+		elfSum := utils.SumOfIntItems(items)
 		if elfSum >= max {
 			max = elfSum
 		}
@@ -35,18 +35,10 @@ func problem2(input []string) int {
 	max := make([]int, 3)
 	for _, line := range input {
 		items := utils.ConvertStringSliceToInt(strings.Split(line, "\n"))
-		elfSum := sumOfItems(items)
+		elfSum := utils.SumOfIntItems(items)
 		max = updateLargestSumSlice(max, elfSum)
 	}
-	return sumOfItems(max)
-}
-
-func sumOfItems(items []int) int {
-	sum := 0
-	for _, i := range items {
-		sum += i
-	}
-	return sum
+	return utils.SumOfIntItems(max)
 }
 
 func updateLargestSumSlice(max []int, candidate int) []int {
